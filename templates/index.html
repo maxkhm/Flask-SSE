@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duplex</title>
+    <script>
+        const evtSource = new EventSource("listen");
+
+        evtSource.onmessage = function(event) {
+            console.log(event.data);
+            let entry = document.createElement('li');
+            entry.appendChild(document.createTextNode(event.data));
+            document.getElementById("list").appendChild(entry);
+        }
+    </script>
+</head>
+<body>
+    <h1>Event list</h1>
+    <ul id="list"></ul>
+</body>
+</html>
